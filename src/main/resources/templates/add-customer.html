@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Customer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 50px;
+        }
+
+        form {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h2>New Customer</h2>
+    <div>
+        <div>
+            <form action="#" th:action="@{/customer/addcustomer}" th:object="${customers}" method="post">
+                <div>
+                    <div>
+                        <label for="firstName">First name</label>
+                        <input type="text" th:field="*{firstName}" id="firstName" placeholder="First Name">
+                        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+                    </div>
+                    <div>
+                        <label for="lastName" class="col-form-label">Last name</label>
+                        <input type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name">
+                        <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+                    </div>
+                    <div>
+                        <label for="address" class="col-form-label">Address</label>
+                        <input type="text" th:field="*{address}" id="address" placeholder="Address">
+                        <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" value="Add Customer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
